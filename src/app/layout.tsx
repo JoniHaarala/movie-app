@@ -2,6 +2,7 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { Footer, Navbar } from '@/components'
+import { ThemeProvider } from '@/components/dm/darkMode'
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -18,10 +19,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} flex min-h-screen bg-slate-600 flex-col items-center`}>
-        <Navbar />
-        {children}
-        <Footer />
+      <body className={`${inter.className} flex min-h-screen bg-slate-100 dark:bg-gray-900 flex-col items-center px-5 3xl:px-0`}>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <Navbar />
+          {children}
+          <Footer />
+        </ThemeProvider>
+
       </body>
     </html>
   )
